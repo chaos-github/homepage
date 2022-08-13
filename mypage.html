@@ -29,20 +29,24 @@
   </div>
 </body>
 <script>
-
+  let ABMText = 'My name is Chao-An Miu , here is my coding resume , hope I can do something special.';
   $(function(){
-    // console.log('This is document ready function')
-    setTimeout( () => {
-      var app = new Vue({
-        el:'#myResume',
-        data:{
-          message: 'Hello!!  welcome to my page !!',
-          today: new Date().toDateString(),
-          aboutme: 'My name is Chao-An Miu , here is my coding area , hope I can do something special.',
-          proFilePic:'./pic/me.jpg'
-        }
-      })
-    },3000)
+    try{
+      // console.log('This is document ready function')
+      setTimeout( () => {
+        new Vue({
+          el:'#myResume',
+          data:{
+            message: 'Hello!!  welcome to my page !!',
+            today: new Date().toDateString(),
+            aboutme: 'My name is Chao-An Miu , here is my coding resume , hope I can do something special.'
+          }
+        })
+        setInterval(dynamicText.bind(this),3000)
+      },3000)
+    }catch(e){
+      console.log(e.message);
+    }
   })
   
   </script>

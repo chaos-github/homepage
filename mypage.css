@@ -33,6 +33,8 @@ body {
 
   div#intro > div{
     font-size : 24px;
+    /* display: flex; */
+    align-items: center;
   }
   
   [v-cloak] {
