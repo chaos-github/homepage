@@ -25,13 +25,14 @@
 	}
 </style>
 <script>
+	
 function init() {
 	var form = document.getElementById('form1');
 	var input = document.getElementById('input');
 	var target = document.getElementById('target');
 	form.onsubmit = function(){
 		try {
-			target.contentWindow.postMessage(input.value, 'http://127.0.0.1/');
+			target.contentWindow.postMessage(input.value, 'http://'+window.location.host);
 		} catch(e) {
 			alert(e);
 		} finally {
@@ -52,8 +53,6 @@ function init() {
 	}, false);
 }
 </script>
-
-
 <div><div class="container"><form id="form1"><input type="text" size="30" id="input"></form></div><br>
 <div class="container">Returned Messages.<div id="msg"></div></div></div>
 <iframe src="iframeReceiveMsg.html" id="target" width="520" height="600" scrolling="no" frameborder="1"></iframe>

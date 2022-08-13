@@ -4,54 +4,46 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-<style>
-
-body {
-  width: auto;
-  height: auto;
-  margin: 0 auto;
-  background-color: rgb(255, 251, 0);
-  padding: 0 20px 20px 20px;
-  border: 5px solid black;
-}
-
-div#intro {
-  width: auto;
-  height: auto;
-  margin: 0 auto;
-  background-color: rgb(255, 251, 0);
-  padding: 0 20px 20px 20px;
-  border: 5px solid black;
-}
-
-</style>
+<link href="mypage.css" rel="stylesheet">
+<body>
+  <div id="myResume">
+    <h2 align="center">Welcome to my page.</h2>
+    <p align="center" v-cloak>Today is {{today}}</p>
+    <div id="intro" >
+      <img src="./pic/me.jpg" alt="This is me !!" >
+      <div v-cloak>
+        {{message}} {{aboutme}}  
+      </div>
+    </div> 
+    <div id="secEducation" >
+      <!-- list schools studied in -->
+    </div> 
+    <div id="secWork" >
+      <!-- list work history -->
+      
+    </div> 
+    <div id="secProject" >
+      <!-- list project involve -->
+      
+    </div> 
+  </div>
+</body>
 <script>
 
-$(function(){
-
-  var app = new Vue({
-    el:'#app',
-    data:{
-      message: 'Hello!!  welcome to my page !!',
-      aboutme: 'My name is Chao-An Miu , here is my coding area , hope I can do something special.'
-    }
+  $(function(){
+    // console.log('This is document ready function')
+    setTimeout( () => {
+      var app = new Vue({
+        el:'#myResume',
+        data:{
+          message: 'Hello!!  welcome to my page !!',
+          today: new Date().toDateString(),
+          aboutme: 'My name is Chao-An Miu , here is my coding area , hope I can do something special.',
+          proFilePic:'./pic/me.jpg'
+        }
+      })
+    },3000)
   })
-
-})
-        
-</script>
-
-<body>
-<div id="introblock">
-  <div id="intro">
-    <h1>Welcome to my page.</h1>
-    <img src="./pic/me.jpg" alt="mememememe" height="30%" width="30%">
-    <div id="app">
-      {{message}} {{aboutme}}  
-    </div>
-  </div> 
-</div>
-
-
-</body>
+  
+  </script>
 </html>

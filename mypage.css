@@ -1,0 +1,40 @@
+body {
+    width: 1024px;
+    height: fit-content;
+    margin: 1px;
+    background-color: rgb(235, 234, 228);
+    padding: 5px 5px 5px 5px;
+    border: 3px solid green;
+  }
+  
+  div#myResume {
+    width: auto;
+    height: fit-content;
+    background-color: rgb(255, 251, 0);
+    padding: 5px 5px 5px 5px;
+    border: 3px solid black;
+  }
+  
+  div#intro {
+    width: auto;
+    height: auto;
+    display: flex ;
+    flex-direction: row-reverse ;
+    margin: 0 auto;
+    background-color: rgb(255, 251, 0);
+    padding: 5px 5px 10px 5px;
+    border: 3px solid black;
+  }
+  
+  div#intro > img{
+    width: 30%;
+    height: 10%;
+  }
+
+  div#intro > div{
+    font-size : 24px;
+  }
+  
+  [v-cloak] {
+    display: none;
+  }
