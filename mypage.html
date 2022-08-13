@@ -12,42 +12,171 @@
     <div id="intro" >
       <img src="./pic/me.jpg" alt="This is me !!" >
       <div v-cloak>
-        {{message}} {{aboutme}}  
+        <p>{{message}}</p>
+        <p>{{aboutme.p1}}</p>
+        <p>{{aboutme.p2}}</p>
       </div>
     </div> 
-    <div id="secEducation" >
-      <!-- list schools studied in -->
+    <!-- <div id="secEducation" >
+      
+      <div v-cloak>
+        <p>{{message}}</p>
+        <p>{{aboutme.p1}}</p>
+        <p>{{aboutme.p2}}
+          {{aboutme.p3}}</p>
+      </div>
     </div> 
     <div id="secWork" >
-      <!-- list work history -->
+      
+      <div v-cloak>
+        <p>{{message}}</p>
+        <p>{{aboutme.p1}}</p>
+        <p>{{aboutme.p2}}
+          {{aboutme.p3}}</p>
+      </div>
       
     </div> 
     <div id="secProject" >
-      <!-- list project involve -->
       
-    </div> 
+      <div v-cloak>
+        <p>{{message}}</p>
+        <p>{{aboutme.p1}}</p>
+        <p>{{aboutme.p2}}
+          {{aboutme.p3}}</p>
+      </div>
+    </div>  -->
   </div>
 </body>
 <script>
-  let ABMText = 'My name is Chao-An Miu , here is my coding resume , hope I can do something special.';
-  $(function(){
-    try{
-      // console.log('This is document ready function')
-      setTimeout( () => {
-        new Vue({
-          el:'#myResume',
-          data:{
-            message: 'Hello!!  welcome to my page !!',
+  let welcomeString = 'Hello!!  welcome to my page !!'
+  let aboutmeP1 = 'My name is Chao-An Miu.'
+  let aboutmeP2 = 'Here is my coding resume. Hope I can do something special. Otherwise I can\'t get new job so this must be good please.'
+  let index = 0
+  let complete = 0
+  let data = {
+            message: '',
             today: new Date().toDateString(),
-            aboutme: 'My name is Chao-An Miu , here is my coding resume , hope I can do something special.'
+            aboutme: {
+              p1 :'' ,
+              p2 :'' 
+            }
           }
-        })
-        setInterval(dynamicText.bind(this),3000)
-      },3000)
-    }catch(e){
-      console.log(e.message);
-    }
+  
+  let vm = new Vue({
+          el:'#myResume',
+          data
   })
+
+  
+  var dynamicString = setInterval(()=>{
+    data.message = welcomeString.substr(0, index);
+    if(welcomeString.length == index){
+      index = 0
+      clearInterval(dynamicString)
+      //-----------------------------------
+        dynamicString = setInterval(()=>{
+        data.aboutme.p1 = aboutmeP1.substr(0, index);
+        if(aboutmeP1.length == index){
+          index = 0
+          clearInterval(dynamicString)
+          //-----------------------------------
+            dynamicString = setInterval(()=>{
+            data.aboutme.p2 = aboutmeP2.substr(0, index);
+            if(aboutmeP2.length == index){
+              clearInterval(dynamicString)
+              complete = 1
+            }else
+            index++  
+          },100)
+          //-----------------------------------
+        }else
+        index++  
+      },100)
+      //-----------------------------------
+    }else
+      index++  
+  },100)
+  
+
+  new Promise((resolve,reject)=>{
+    let check = setInterval(()=>{
+      if(complete == 1){
+        clearInterval(check) 
+        resolve()
+      }
+    },3000)
+    console.log('wait a second')
+  }).then(function(){
+    console.log('resolve')
+  }).catch(function(){  
+    console.log('reject')
+  })
+  
+  // let dynamicString2 = setInterval(function abc(){
+  //   data.aboutme.p1 = aboutmeP1.substr(0, index2);
+  //   if(aboutmeP1.length == index2)
+  //     clearInterval(dynamicString2)
+  //   else
+  //     index2++  
+  // },100)
+
+  // let dynamicString3 = setInterval(function abc(){
+  //   data.aboutme.p2 = aboutmeP2.substr(0, index3);
+  //   if(aboutmeP2.length == index3)
+  //     clearInterval(dynamicString3)
+  //   else
+  //     index3++  
+  // },100)
+  
+  // new Vue({
+  //         el:'#secEducation',
+  //         data:{
+  //           message: 'My education',
+  //           highSchool: {
+  //             name: 'Nanhu senior high school',
+  //             start:'2003/09',
+  //             end: '2006/06'
+  //           },
+  //           university: {
+  //             name:'Fujen catholic university',
+  //             start:'2006/09',
+  //             end: '2010/06'
+  //           }
+  //          }
+  // })
+  // new Vue({
+  //         el:'#secWork',
+  //         data:{
+  //           message: 'Work experience',
+  //           company_1: {
+  //             name: 'America megatrends',
+  //             start:'2013/10',
+  //             end: '2018/02'
+  //           },
+  //           company_2: {
+  //             name:'PCHOME store',
+  //             start:'2018/07',
+  //             end: '2022/10'
+  //           }
+  //         }
+  // })
+  // new Vue({
+  //         el:'#secProject',
+  //         data:{
+  //           message: 'Hello!!  welcome to my page !!',
+  //           today: new Date().toDateString(),
+  //           aboutme: 'My name is Chao-An Miu , here is my coding resume , hope I can do something special.'
+  //         }
+  // })
+  // // $(function(){
+  //   try{
+  //     setTimeout( () => {
+      
+  //     },3000)
+  //   }catch(e){
+  //     console.log(e.message);
+  //   }
+  // })
   
   </script>
 </html>

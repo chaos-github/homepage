@@ -15,26 +15,34 @@ body {
     border: 3px solid black;
   }
   
-  div#intro {
+  div#intro , #secEducation , #secWork, #secProject{
     width: auto;
     height: auto;
-    display: flex ;
-    flex-direction: row-reverse ;
+    display: flex;
     margin: 0 auto;
     background-color: rgb(255, 251, 0);
     padding: 5px 5px 10px 5px;
     border: 3px solid black;
+    flex-direction: row;
   }
   
   div#intro > img{
     width: 30%;
     height: 10%;
+    border-radius: 50%;
+    padding: 10px;
   }
 
   div#intro > div{
     font-size : 24px;
-    /* display: flex; */
-    align-items: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: top; 
+    padding: 20px;
+  }
+
+  div#intro > div > p{
+   margin-top: 20px;
   }
   
   [v-cloak] {
