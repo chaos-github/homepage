@@ -28,6 +28,11 @@
     flex-direction: row;
   }
 
+  div#myResume > div {
+    margin-top: 5px;
+
+  }
+
   div#myResume > div > div {
     display: flex;
     flex: auto; 
@@ -56,6 +61,14 @@
   div#intro > div > p{
     margin-top: 20px;
   }
+
+  div#secEducation > div > div {
+    display: flex;
+    /* flex:auto; */
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+  }
+
   div#secEducation > div > div {
     display: flex;
     /* flex:auto; */
