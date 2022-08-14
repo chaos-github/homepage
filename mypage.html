@@ -6,32 +6,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 <link href="mypage.css" rel="stylesheet">
 <body>
-  <div id="myResume">
-    <h2 align="center">Welcome to my page.</h2>
-    <p align="center" v-cloak>Today is {{today}}</p>
-    <div id="intro" >
-      <img src="./pic/me.jpg" alt="This is me !!" >
-      <div v-cloak>
-        <h3>{{aboutme.p0}}</h3>
-        <p>{{aboutme.p1}}</p>
-        <p>{{aboutme.p2}}</p>
-        <p style="font-size:20px;">{{aboutme.p3}}</p>
-      </div>
-    </div> 
-    <div id="secEducation" >
-      <div v-cloak>
-        <h3 align="center">Education</h3>
-        <div>
-          <span align="left">{{Education.highSchool.name}}</span><span align="right">{{Education.highSchool.start}}~{{Education.highSchool.end}}</span>
+  <div id="wrapper">
+    <div id="myResume">
+      <h2 align="center">Welcome to my page.</h2>
+      <p align="center" v-cloak>Today is {{today}}</p>
+      <div id="intro" >
+        <img src="./pic/me.jpg" alt="This is me !!" >
+        <div v-cloak>
+          <h3>{{aboutme.p0}}</h3>
+          <p>{{aboutme.p1}}</p>
+          <p>{{aboutme.p2}}</p>
+          <p style="font-size:20px;">{{aboutme.p3}}</p>
         </div>
-        <div>
-          <span align="left">{{Education.University.name}}</span><span align="right">{{Education.University.start}}~{{Education.University.end}}</span>
+      </div> 
+      <div id="secEducation" >
+        <div v-cloak>
+          <h3 align="center">Education</h3>
+          <div>
+            <span>{{Education.highSchool.name}}</span><span>{{Education.highSchool.start}}~{{Education.highSchool.end}}</span>
+          </div>
+          <div>
+            <span>{{Education.University.name}}</span><span>{{Education.University.start}}~{{Education.University.end}}</span>
+          </div>
+          <div>
+            <span>{{Education.masterDegree.name}}</span><span>{{Education.masterDegree.start}}~{{Education.masterDegree.end}}</span>
+          </div>
         </div>
-        <div>
-          <span align="left">{{Education.masterDegree.name}}</span><span align="right">{{Education.masterDegree.start}}~{{Education.masterDegree.end}}</span>
-        </div>
-      </div>
-    </div> 
+      </div> 
+    </div>
     <!-- 
     <div id="secWork" >
       
