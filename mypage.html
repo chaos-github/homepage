@@ -12,20 +12,27 @@
     <div id="intro" >
       <img src="./pic/me.jpg" alt="This is me !!" >
       <div v-cloak>
-        <p>{{message}}</p>
+        <h3>{{aboutme.p0}}</h3>
         <p>{{aboutme.p1}}</p>
         <p>{{aboutme.p2}}</p>
+        <p style="font-size:20px;">{{aboutme.p3}}</p>
       </div>
     </div> 
-    <!-- <div id="secEducation" >
-      
+    <div id="secEducation" >
       <div v-cloak>
-        <p>{{message}}</p>
-        <p>{{aboutme.p1}}</p>
-        <p>{{aboutme.p2}}
-          {{aboutme.p3}}</p>
+        <h3 align="center">Education</h3>
+        <div>
+          <span align="left">{{Education.highSchool.name}}</span><span align="right">{{Education.highSchool.start}}~{{Education.highSchool.end}}</span>
+        </div>
+        <div>
+          <span align="left">{{Education.University.name}}</span><span align="right">{{Education.University.start}}~{{Education.University.end}}</span>
+        </div>
+        <div>
+          <span align="left">{{Education.masterDegree.name}}</span><span align="right">{{Education.masterDegree.start}}~{{Education.masterDegree.end}}</span>
+        </div>
       </div>
     </div> 
+    <!-- 
     <div id="secWork" >
       
       <div v-cloak>
@@ -48,17 +55,40 @@
   </div>
 </body>
 <script>
-  let welcomeString = 'Hello!!  welcome to my page !!'
-  let aboutmeP1 = 'My name is Chao-An Miu.'
-  let aboutmeP2 = 'Here is my coding resume. Hope I can do something special. Otherwise I can\'t get new job so this must be good please.'
   let index = 0
+  let aryInd = 0
   let complete = 0
+
+  let aboutMe = [ 'Introduction:',
+                  'Hi, my name is CHAO-AN MIU.',
+                  'I’m modest, amiable, persevering and responsible. I always took cautious and meticulous attitude to work.',
+                  'Phone: 0988-923-512. LINE: miau628 E-mail: miau_628@hotmail.com.']
+
   let data = {
             message: '',
             today: new Date().toDateString(),
             aboutme: {
+              p0 :'',
               p1 :'' ,
-              p2 :'' 
+              p2 :'' ,
+              p3 :''
+            },
+            Education:{
+              highSchool:{
+                name:'Nanhu senior highschool',
+                start:'2003/09',
+                end:'2006/07'
+              },
+              University:{
+                name:'Fujen Catholic Unerversity',
+                start:'2006/09',
+                end:'2010/07'
+              },
+              masterDegree:{
+                name:'National ChunCheng Unerversity',
+                start:'2010/09',
+                end:'2012/07'
+              }
             }
           }
   
@@ -67,31 +97,49 @@
           data
   })
 
-  
-  var dynamicString = setInterval(()=>{
-    data.message = welcomeString.substr(0, index);
-    if(welcomeString.length == index){
+  var dynamicString = setInterval(()=>{ 
+    data.aboutme.p0 = aboutMe[aryInd].substr(0, index);
+    if(aboutMe[aryInd].length == index){
       index = 0
+      aryInd++
       clearInterval(dynamicString)
       //-----------------------------------
+      {
         dynamicString = setInterval(()=>{
-        data.aboutme.p1 = aboutmeP1.substr(0, index);
-        if(aboutmeP1.length == index){
-          index = 0
-          clearInterval(dynamicString)
-          //-----------------------------------
-            dynamicString = setInterval(()=>{
-            data.aboutme.p2 = aboutmeP2.substr(0, index);
-            if(aboutmeP2.length == index){
-              clearInterval(dynamicString)
-              complete = 1
-            }else
-            index++  
-          },100)
-          //-----------------------------------
-        }else
-        index++  
-      },100)
+          data.aboutme.p1 = aboutMe[aryInd].substr(0, index);
+          if(aboutMe[aryInd].length == index){
+            index = 0
+            aryInd++
+            clearInterval(dynamicString)
+            //-----------------------------------
+            {
+              dynamicString = setInterval(()=>{
+                data.aboutme.p2 = aboutMe[aryInd].substr(0, index);
+                if(aboutMe[aryInd].length == index){
+                  index = 0
+                  aryInd++
+                  clearInterval(dynamicString)
+                  //-----------------------------------
+                  {
+                    dynamicString = setInterval(()=>{
+                      data.aboutme.p3 = aboutMe[aryInd].substr(0, index);
+                      if(aboutMe[aryInd].length == index){
+                        clearInterval(dynamicString)
+                        complete = 1
+                      }else
+                      index++  
+                    },100)
+                  } 
+                  //-----------------------------------
+                }else
+                index++  
+              },100)
+            } 
+            //-----------------------------------
+          }else
+          index++  
+        },100)
+      }
       //-----------------------------------
     }else
       index++  
@@ -99,19 +147,26 @@
   
 
   new Promise((resolve,reject)=>{
-    let check = setInterval(()=>{
+    let check = setInterval(()=>{ 
       if(complete == 1){
         clearInterval(check) 
         resolve()
       }
     },3000)
     console.log('wait a second')
-  }).then(function(){
-    console.log('resolve')
-  }).catch(function(){  
-    console.log('reject')
+  }).then(function(reTry){
+    console.log('Dynamic introduction complete !!')
+  }).catch(function(reTry){  
+    console.log('Dynamic went wrong.')
   })
   
+  
+  function clearAllIntervals(){
+    for(let i=0; i<100; i++)
+    {
+      window.clearInterval(i);
+    }
+  }
   // let dynamicString2 = setInterval(function abc(){
   //   data.aboutme.p1 = aboutmeP1.substr(0, index2);
   //   if(aboutmeP1.length == index2)

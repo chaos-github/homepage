@@ -1,4 +1,4 @@
-body {
+  body {
     width: 1024px;
     height: fit-content;
     margin: 1px;
@@ -8,14 +8,16 @@ body {
   }
   
   div#myResume {
+    font-size : 24px;
     width: auto;
-    height: fit-content;
+    /* height: fit-content; */
     background-color: rgb(255, 251, 0);
     padding: 5px 5px 5px 5px;
     border: 3px solid black;
   }
-  
-  div#intro , #secEducation , #secWork, #secProject{
+
+  /* div#intro , #secEducation , #secWork, #secProject{ */
+  div#myResume > div {
     width: auto;
     height: auto;
     display: flex;
@@ -25,16 +27,26 @@ body {
     border: 3px solid black;
     flex-direction: row;
   }
-  
+
+  div#myResume > div > div {
+    display: flex;
+    flex: auto; 
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+  }
+
+  div#myResume > div > div  h3{
+    font-size: 30px;  
+  } 
+
   div#intro > img{
-    width: 30%;
+    width: 35%;
     height: 10%;
     border-radius: 50%;
     padding: 10px;
   }
 
   div#intro > div{
-    font-size : 24px;
     display: flex;
     flex-direction: column; 
     align-items: top; 
@@ -42,9 +54,29 @@ body {
   }
 
   div#intro > div > p{
-   margin-top: 20px;
+    margin-top: 20px;
   }
-  
+  div#secEducation > div > div {
+    display: flex;
+    /* flex:auto; */
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+  }
+  div#secEducation > div span:nth-child(odd){
+    /* align-self: left; */
+    flex:auto;
+    font: bold;
+    font-size: 30px; 
+    
+  }
+  div#secEducation > div span:nth-child(even){
+    /* align-self: right; */
+    flex:auto;
+    font-size: 25px; 
+  }
+
+ 
+
   [v-cloak] {
     display: none;
   }
