@@ -7,20 +7,20 @@
 <link href="mypage.css" rel="stylesheet">
 <body>
   <div id="wrapper">
-    <div id="myResume">
-      <h2 align="center">Welcome to my page.</h2>
-      <p align="center" v-cloak>Today is {{today}}</p>
+    <div id="myResume" v-cloak>
+      <h2 align="center" >Welcome to my page.</h2>
+      <p align="center" v-once>Today is {{today}}</p>
       <div id="intro" >
         <img src="./pic/me.jpg" alt="This is me !!" >
-        <div v-cloak>
-          <h3>{{aboutme.p0}}</h3>
+        <div>
+          <h3 v-text="aboutme.p0"></h3>
           <p>{{aboutme.p1}}</p>
           <p>{{aboutme.p2}}</p>
-          <p style="font-size:20px;">{{aboutme.p3}}</p>
+          <span v-html="aboutme.p3"></span>
         </div>
       </div> 
       <div id="secEducation" >
-        <div v-cloak>
+        <div>
           <h3 align="center">Education</h3>
           <div>
             <span>{{Education.highSchool.name}}</span><span>{{Education.highSchool.start}}~{{Education.highSchool.end}}</span>
@@ -62,7 +62,7 @@
             message: '',
             today: new Date().toDateString(),
             aboutme: {
-              p0 :'',
+              p0 :'' ,
               p1 :'' ,
               p2 :'' ,
               p3 :''
@@ -98,7 +98,8 @@
     let aboutMe = [ 'Introduction:',
                     'Hi, my name is CHAO-AN MIU.',
                     'I’m modest, amiable, persevering and responsible. I always took cautious and meticulous attitude to work.',
-                    'Phone: 0988-923-512. LINE: miau628 E-mail: miau_628@hotmail.com.']
+                    '<p style="font-size:20px; color:red;">Phone: 0988-923-512. LINE: miau628 E-mail: miau_628@hotmail.com.</p>']
+                    
     var dynamicString = setInterval(()=>{ 
       data.aboutme.p0 = aboutMe[aryInd].substr(0, index);
       if(aboutMe[aryInd].length == index){
@@ -121,18 +122,14 @@
                     index = 0
                     aryInd++
                     clearInterval(dynamicString)
-                    //-----------------------------------
+                    // -----------------------------------
                     {
-                      dynamicString = setInterval(()=>{
-                        data.aboutme.p3 = aboutMe[aryInd].substr(0, index);
-                        if(aboutMe[aryInd].length == index){
-                          clearInterval(dynamicString)
+                      setTimeout(()=>{                                              
+                          data.aboutme.p3 = aboutMe[aryInd]
                           complete = 1
-                        }else
-                        index++  
-                      },introSpeed)
+                      },1000)
                     } 
-                    //-----------------------------------
+                    // -----------------------------------
                   }else
                   index++  
                 },introSpeed)
