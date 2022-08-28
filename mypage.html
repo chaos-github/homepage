@@ -8,10 +8,10 @@
 <body>
   <div id="wrapper">
     <div id="myResume" v-cloak>
-      <h2 align="center" >Welcome to my page.</h2>
-      <p align="center" v-once>Today is {{today}}</p>
+      <h2 align="center" v-once>{{welcomeMessage}}</h2>
+      <p align="center" v-once>{{today}}</p>
       <div id="intro" >
-        <img src="./pic/me.jpg" alt="This is me !!" >
+        <img :src="profilePic" alt="This is me !!" >
         <div>
           <h3 v-text="aboutme.p0"></h3>
           <p>{{aboutme.p1}}</p>
@@ -60,7 +60,9 @@
   let complete = 0
   let data = {
             message: '',
-            today: new Date().toDateString(),
+            welcomeMessage : 'Welcome to my VueResume',
+            profilePic :'./pic/me.jpg',
+            // today: new Date().toDateString(),
             aboutme: {
               p0 :'' ,
               p1 :'' ,
@@ -88,8 +90,35 @@
   
   let vm = new Vue({
           el:'#myResume',
-          data
+          data,
+          computed : {
+            today : function(){
+              return 'Today is '+new Date().toDateString()
+            }
+          }
   })
+  // let vmEdu = new Vue({
+  //         el:'#secEducation',
+  //         data:{
+  //           Education:{
+  //             highSchool:{
+  //               name:'Nanhu senior highschool2',
+  //               start:'2003/09',
+  //               end:'2006/07'
+  //             },
+  //             University:{
+  //               name:'Fujen Catholic Unerversity',
+  //               start:'2006/09',
+  //               end:'2010/07'
+  //             },
+  //             masterDegree:{
+  //               name:'National ChunCheng Unerversity',
+  //               start:'2010/09',
+  //               end:'2012/07'
+  //             }
+  //           }
+  //         }
+  // })
 
   function IntroDynamic(){
     let index = 0
