@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php
+echo 123;
+?>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
